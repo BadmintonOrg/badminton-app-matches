@@ -1,6 +1,14 @@
 package si.fri.rso.badmintonappmatches.api.v1.resources;
 
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
+import org.eclipse.microprofile.openapi.annotations.headers.Header;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import si.fri.rso.badmintonappmatches.lib.Match;
+import si.fri.rso.badmintonappmatches.models.entities.MatchesEntity;
 import si.fri.rso.badmintonappmatches.services.beans.MatchBean;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -30,6 +38,13 @@ public class MatchesResource {
     @Context
     protected UriInfo uriInfo;
 
+    @Operation(description = "Get all matches with data", summary = "Get all matches")
+    @APIResponses({
+            @APIResponse(responseCode = "200",
+                    description = "List of matches",
+                    content = @Content(schema = @Schema(implementation = Match.class, type = SchemaType.ARRAY)),
+                    headers = {@Header(name = "X-Total-Count", description = "Number of objects in list")}
+            )})
     @GET
     public Response getMatches() {
         List<Match> matches = matchBean.getMatches(uriInfo);
