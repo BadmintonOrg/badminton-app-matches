@@ -1,5 +1,6 @@
 package si.fri.rso.badmintonappmatches.api.v1;
 
+import com.kumuluz.ee.discovery.annotations.RegisterService;
 import org.eclipse.microprofile.openapi.annotations.OpenAPIDefinition;
 import org.eclipse.microprofile.openapi.annotations.info.Contact;
 import org.eclipse.microprofile.openapi.annotations.info.Info;
@@ -12,6 +13,7 @@ import javax.ws.rs.core.Application;
         contact = @Contact(email = "skupina6.rso@student.uni-lj.si"),
         license = @License(name = "dev"), description = "API for managing matches' data for badminton app."))
 @ApplicationPath("/v1")
+@RegisterService
 public class BadmintonApplication extends Application {
 
 }

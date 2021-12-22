@@ -5,6 +5,7 @@ import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.headers.Header;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import si.fri.rso.badmintonappmatches.lib.Match;
@@ -13,10 +14,7 @@ import si.fri.rso.badmintonappmatches.services.beans.MatchBean;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -50,6 +48,19 @@ public class MatchesResource {
         List<Match> matches = matchBean.getMatches(uriInfo);
 
         return Response.status(Response.Status.OK).entity(matches).build();
+    }
+
+    @GET
+    @Path("/{matchId}")
+    public Response getMatch(@PathParam("matchId") Integer matchId) {
+
+        Match comm = matchBean.getMatch(matchId);
+
+        if (comm == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        return Response.status(Response.Status.OK).entity(comm).build();
     }
 
 }
