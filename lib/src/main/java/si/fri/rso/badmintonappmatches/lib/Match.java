@@ -11,27 +11,47 @@ public class Match {
     private String score;
     private Integer winner;
 
+    private User user1;
+
+    public User getUser1() {
+        return user1;
+    }
+
+    public void setUser1(User user1) {
+        this.user1 = user1;
+    }
+
+    public User getUser2() {
+        return user2;
+    }
+
+    public void setUser2(User user2) {
+        this.user2 = user2;
+    }
+
+    private User user2;
+
     public Integer getMatchId() {
         return matchId;
     }
 
-    public void setMatchId(Integer matchId) {
+    public void setMatchId(int matchId) {
         this.matchId = matchId;
     }
 
-    public Integer getUserId1() {
+    public int getUserId1() {
         return userId1;
     }
 
-    public void setUserId1(Integer userId1) {
+    public void setUserId1(int userId1) {
         this.userId1 = userId1;
     }
 
-    public Integer getUserId2() {
+    public int getUserId2() {
         return userId2;
     }
 
-    public void setUserId2(Integer userId2) {
+    public void setUserId2(int userId2) {
         this.userId2 = userId2;
     }
 
@@ -51,11 +71,11 @@ public class Match {
         this.score = score;
     }
 
-    public Integer getWinner() {
+    public int getWinner() {
         return winner;
     }
 
-    public void setWinner(Integer winner) {
+    public void setWinner(int winner) {
         this.winner = winner;
     }
 }

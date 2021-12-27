@@ -41,5 +41,19 @@ kumuluzee:
       web-instrumentation:
         - name: images-endpoint
           url-pattern: /v1/matches/*
+  config:
+    start-retry-delay-ms: 200
+    max-retry-delay-ms: 900000
+    etcd:
+      hosts: http://20.85.253.39:2379
+
+  discovery:
+    cluster: 1
+    etcd:
+      hosts: http://20.85.253.39:2379
+      ttl: 30
+      ping-interval: 5
 rest-properties:
   maintenance-mode: false
+  broken: false
+  userDiscovery: true
