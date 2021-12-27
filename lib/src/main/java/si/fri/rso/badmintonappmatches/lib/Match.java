@@ -39,7 +39,7 @@ public class Match {
         this.matchId = matchId;
     }
 
-    public int getUserId1() {
+    public Integer getUserId1() {
         return userId1;
     }
 
@@ -47,7 +47,7 @@ public class Match {
         this.userId1 = userId1;
     }
 
-    public int getUserId2() {
+    public Integer getUserId2() {
         return userId2;
     }
 
@@ -71,7 +71,7 @@ public class Match {
         this.score = score;
     }
 
-    public int getWinner() {
+    public Integer getWinner() {
         return winner;
     }
 

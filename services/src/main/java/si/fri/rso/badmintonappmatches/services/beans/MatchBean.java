@@ -127,19 +127,6 @@ public class MatchBean {
         return null;
     }
 
-    public Match getMatch(Integer id) {
-
-        MatchesEntity matchesEntity = em.find(MatchesEntity.class, id);
-
-        if (matchesEntity == null) {
-            throw new NotFoundException();
-        }
-
-        Match match = MatchConverter.toDto(matchesEntity);
-
-        return match;
-    }
-
     public Match createMatch(Match match) {
 
         MatchesEntity matchesEntity = MatchConverter.toEntity(match);
