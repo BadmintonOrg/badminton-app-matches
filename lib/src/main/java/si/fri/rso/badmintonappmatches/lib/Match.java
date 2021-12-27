@@ -4,34 +4,34 @@ import java.util.Date;
 
 public class Match {
 
-    private int matchId;
-    private int userId1;
-    private int userId2;
+    private Integer matchId;
+    private Integer userId1;
+    private Integer userId2;
     private Date date;
     private String score;
-    private int winner;
+    private Integer winner;
 
-    public int getMatchId() {
+    public Integer getMatchId() {
         return matchId;
     }
 
-    public void setMatchId(int matchId) {
+    public void setMatchId(Integer matchId) {
         this.matchId = matchId;
     }
 
-    public int getUserId1() {
+    public Integer getUserId1() {
         return userId1;
     }
 
-    public void setUserId1(int userId1) {
+    public void setUserId1(Integer userId1) {
         this.userId1 = userId1;
     }
 
-    public int getUserId2() {
+    public Integer getUserId2() {
         return userId2;
     }
 
-    public void setUserId2(int userId2) {
+    public void setUserId2(Integer userId2) {
         this.userId2 = userId2;
     }
 
@@ -51,11 +51,11 @@ public class Match {
         this.score = score;
     }
 
-    public int getWinner() {
+    public Integer getWinner() {
         return winner;
     }
 
-    public void setWinner(int winner) {
+    public void setWinner(Integer winner) {
         this.winner = winner;
     }
 }

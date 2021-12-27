@@ -17,10 +17,10 @@ public class MatchesEntity {
     private Integer id;
 
     @Column(name = "user_id1")
-    private int userId1;
+    private Integer userId1;
 
     @Column(name = "user_id2")
-    private int userId2;
+    private Integer userId2;
 
     @Column(name = "date_played")
     private Date date;
@@ -29,7 +29,7 @@ public class MatchesEntity {
     private String score;
 
     @Column(name = "winner")
-    private int winner;
+    private Integer winner;
 
     public Integer getId() {
         return id;
@@ -39,19 +39,19 @@ public class MatchesEntity {
         this.id = id;
     }
 
-    public int getUserId1() {
+    public Integer getUserId1() {
         return userId1;
     }
 
-    public void setUserId1(int userId1) {
+    public void setUserId1(Integer userId1) {
         this.userId1 = userId1;
     }
 
-    public int getUserId2() {
+    public Integer getUserId2() {
         return userId2;
     }
 
-    public void setUserId2(int userId2) {
+    public void setUserId2(Integer userId2) {
         this.userId2 = userId2;
     }
 
@@ -71,11 +71,11 @@ public class MatchesEntity {
         this.score = score;
     }
 
-    public int getWinner() {
+    public Integer getWinner() {
         return winner;
     }
 
-    public void setWinner(int winner) {
+    public void setWinner(Integer winner) {
         this.winner = winner;
     }
 }
