@@ -22,6 +22,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.ws.rs.NotFoundException;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.UriInfo;
 import java.io.IOException;
@@ -124,6 +125,88 @@ public class MatchBean {
             return null;
         }
         return null;
+    }
+
+    public Match createMatch(Match match) {
+
+        MatchesEntity matchesEntity = MatchConverter.toEntity(match);
+
+        try {
+            beginTx();
+            em.persist(matchesEntity);
+            commitTx();
+        }
+        catch (Exception e) {
+            rollbackTx();
+        }
+
+        if (matchesEntity.getId() == null) {
+            throw new RuntimeException("Entity was not persisted");
+        }
+
+        return MatchConverter.toDto(matchesEntity);
+    }
+
+    public boolean deleteMatch(Integer id) {
+
+        MatchesEntity cort = em.find(MatchesEntity.class, id);
+
+        if (cort != null) {
+            try {
+                beginTx();
+                em.remove(cort);
+                commitTx();
+            }
+            catch (Exception e) {
+                rollbackTx();
+            }
+        }
+        else {
+            return false;
+        }
+
+        return true;
+    }
+
+    public Match putMatch(Integer id, Match match) {
+
+        MatchesEntity c = em.find(MatchesEntity.class, id);
+
+        if (c == null) {
+            return null;
+        }
+
+        MatchesEntity updatedMatchEntity = MatchConverter.toEntity(match);
+
+        try {
+            beginTx();
+            updatedMatchEntity.setId(c.getId());
+            updatedMatchEntity = em.merge(updatedMatchEntity);
+            commitTx();
+        }
+        catch (Exception e) {
+            rollbackTx();
+        }
+
+        return MatchConverter.toDto(updatedMatchEntity);
+    }
+
+    private void beginTx() {
+        if (!em.getTransaction().isActive()) {
+            em.getTransaction().begin();
+        }
+    }
+
+    private void commitTx() {
+        if (em.getTransaction().isActive()) {
+            em.getTransaction().commit();
+        }
+    }
+
+    private void rollbackTx() {
+        if (em.getTransaction().isActive()) {
+            em.getTransaction().rollback();
+        }
     }
 
 }
